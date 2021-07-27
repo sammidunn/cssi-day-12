@@ -1,3 +1,5 @@
+let label = "All"
+
 window.onload = (event) => {
     firebase.auth().onAuthStateChanged(user => {
         if(user) {
@@ -10,20 +12,28 @@ window.onload = (event) => {
     });
 }
 
+const labelSelect = document.querySelector("#select");
+labelSelect.addEventListener("change", () => {
+    let labelIndex = labelSelect.selectedIndex;
+    label = labelSelect.options[labelIndex].value;
+})
+
 const getNotes = (userID) => {
     const notesRef = firebase.database().ref(`/users/${userID}`);
     notesRef.on('value', (snapshot) => {
         const data = snapshot.val();
-        renderDataASHTML(data);
-    });
+        renderDataAsHTML(data);
+    }); 
 }
 
-const renderDataASHTML = (data) => {
+const renderDataAsHTML = (data) => {
     let cards = ``;
 
     for(const noteItem in data) {
         const note = data[noteItem];
-        cards += createCard(note);
+        if(label === "All" || label === note.label) { 
+            cards += createCard(note);
+        }
     }
     document.querySelector("#app").innerHTML = cards;
 }
@@ -37,6 +47,9 @@ const createCard = (note) => {
                 </header>
                 <div class="card-content">
                     <div class="content">${note.text}</div>
+                </div>
+                <div class="card-content">
+                    <div>${note.label}</div>
                 </div>
             </div>
         </div>

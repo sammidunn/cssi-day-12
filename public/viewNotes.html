@@ -15,7 +15,7 @@
     <script defer src="/__/firebase/8.3.1/firebase-auth.js"></script>
     <script defer src="/__/firebase/8.3.1/firebase-database.js"></script>
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-    <script src="js/viewNotes.js"></script>
+    
   </head>
   <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -31,6 +31,17 @@
           <div class="column has-text-centered">
             <h1 class="title">Some of Your Greatest Ideas Started Here</h1><br>
           </div>
+          <div id="label">
+                <div class="select">
+                    <select id="select">
+                        <option>All</option>
+                        <option>General</option>
+                        <option>Urgent</option>
+                        <option>Work</option>
+                        <option>Personal</option>
+                    </select>
+                </div>
+            </div>
         </div>
         <div id="app" class="columns is-multiline">
           <!-- Note cards will render here -->
@@ -47,6 +58,7 @@
         </div>
       </div>
     </footer>
+    <script src="js/viewNotes.js"></script>
   </body>
 
 </html>

@@ -15,7 +15,7 @@
     <script defer src="/__/firebase/8.3.1/firebase-auth.js"></script>
     <script defer src="/__/firebase/8.3.1/firebase-database.js"></script>
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-    <script src="js/writeNote.js"></script>
+    
   </head>
   <body>
 
@@ -45,6 +45,16 @@
                   <input class="input is-medium" type="text" id="noteTitle">
                 </div>
               </div>
+                <div id="label">
+                    <div class="select">
+                        <select id="select">
+                            <option>General</option>
+                            <option>Urgent</option>
+                            <option>Work</option>
+                            <option>Personal</option>
+                        </select>
+                    </div>
+                </div>
               <div class="field">
                 <label class="label">Note</label>
                 <div class="control">
@@ -60,6 +70,6 @@
         </div>
       </div>
     </section>
-
+    <script src="js/writeNote.js"></script>
   </body>
 </html>
